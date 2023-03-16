@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
 import { TelaPrincipalComponent } from './tela-principal/tela-principal.component';
 import { ListaTarefasComponent } from './lista-tarefas/lista-tarefas.component';
+import { HistoricoTarefasComponent } from './historico-tarefas/historico-tarefas.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
     TelaPrincipalComponent,
-    ListaTarefasComponent
+    ListaTarefasComponent,
+    HistoricoTarefasComponent
   ],
   imports: [
     BrowserModule,

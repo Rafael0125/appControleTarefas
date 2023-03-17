@@ -6,9 +6,9 @@ import { ListaTarefasComponent } from "./lista-tarefas/lista-tarefas.component";
 import { HistoricoTarefasComponent } from "./historico-tarefas/historico-tarefas.component";
 
 export const ROUTES : Routes = [
-    { path:' ',component:TelaPrincipalComponent},
-    { path:'historico',component:HistoricoTarefasComponent},
-    { path:'listaTarefas',component:ListaTarefasComponent}
+    { path:"",component:TelaPrincipalComponent},
+    { path:"historico",component:HistoricoTarefasComponent},
+    { path:"listaTarefas",component:ListaTarefasComponent}
 ]
 
 

@@ -1,0 +1,7 @@
+.nav-link{
+    color: #000;
+}
+.active{
+    color: #c1c1c1;
+    text-decoration: underline;
+}

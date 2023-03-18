@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 import {ROUTES} from './app.routes'
 import { RouterModule } from '@angular/router';
@@ -26,6 +28,7 @@ import { HistoricoTarefasComponent } from './historico-tarefas/historico-tarefas
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(ROUTES)
   ],
   providers: [],

@@ -4,30 +4,335 @@
     <div class="row d-flex m-1">
 
         <div class="col-lg-4 my-1"> <!-- Primeira coluna // Botões de inclusão, exclusão e conclusão de tarefas // Inicio -->
-            <div class="row m-1 p-1"> <!-- Linha botões de inclusão e exclusão // Inicio -->
-                <div class="col-12 p-1 d-flex justify-content-center"> 
+            <div class="row m-1 p-1 border rounded"> <!-- Linha botões de inclusão, exclusão e conclusão  // Inicio -->
+                <div class="col-12 p-1 d-flex justify-content-center"> <!-- Linha dos botões de inclusão / exclusão // Inicio -->
+
                     <div class="col-6 d-flex justify-content-end"> <!-- Botão de inclusão // Inicio -->
-                        <button type="button" class="btn btn-success">
+                        <!-- Botão para acionar modal // Inicio -->
+                        <button 
+                        type="button" 
+                        class="btn btn-outline-success" 
+                        data-toggle="modal" 
+                        data-target="#modalInclusao">
                             Incluir Tarefa
-                        </button>
+                        </button> <!-- Botão para acionar modal // Fim -->
+
+                        <!-- Modal Inclusão -->
+                        <div class="modal fade" id="modalInclusao" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content"> <!-- Container do Modal // Inicio -->
+
+                                    <div class="modal-header"> <!-- Cabeçalho do Modal // Inicio -->
+                                        <h5 class="modal-title text-success" id="exampleModalLabel">Incluir Tarefa</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div> <!-- Cabeçalho do Modal // Fim -->
+
+                                    
+
+                                        <div class="modal-body"> <!-- Corpo do Modal de inclusão // Inicio -->
+
+                                            <div class="container border">
+                                                <form novalidate class="" [formGroup] ='formEntradaTarefa' (ngSubmit)="incluirTarefa()">
+                                                    <div class="form-group col-md-12"> <!-- Titulo Tarefa -->
+                                                        <label for="tituloTarefa">Titulo da tarefa</label>
+                                                        <input 
+                                                        type="text" 
+                                                        class="form-control" 
+                                                        id="tituloTarefa" 
+                                                        placeholder="Titulo da tarefa"
+                                                        formControlName="titulo">
+                                                    </div> <!-- Titulo Tarefa -->
+
+                                                    <div class="form-group col-md-6"> <!-- Data Tarefa -->
+                                                        <label for="dataTarefa">Data da Tarefa</label>
+                                                        <input 
+                                                        type="date" 
+                                                        class="form-control" 
+                                                        id="dataTarefa"
+                                                        formControlName="data">
+                                                    </div> <!-- Data Tarefa -->
+
+                                                    <div class="form-group col-md-12"> <!-- Descrição Tarefa-->
+                                                        <label for="descricaoTarefa">Descrição da tarefa </label>
+                                                        <textarea 
+                                                        class="form-control" 
+                                                        id="descricaoTarefa" 
+                                                        rows="3"
+                                                        formControlName="descricao"></textarea>
+                                                    </div> <!-- Descrição Tarefa-->
+
+                                                    <div class="col-12 text-right">
+                                                        <button type="button" class="btn btn-secondary mx-2" data-dismiss="modal">
+                                                            Fechar
+                                                        </button>
+
+                                                        <button type="submit" class="btn btn-success mx-2">
+                                                            Salvar mudanças
+                                                        </button>                                            
+                                                    </div> 
+                                                </form>
+                                            </div>
+                                        </div>
+                                    
+
+                                </div> <!-- Container do Modal // Fim -->
+                            </div>
+                        </div>
                     </div> <!-- Botão de inclusão // Fim -->
 
                     <div class="col-6 d-flex"> <!-- Botão de exclusão // Inicio -->
-                        <button type="button" class="btn btn-danger">
-                            Excluir Tarefa
-                        </button>
-                    </div> <!-- Botão de exclusão // Fim -->
-                </div> 
 
-                <div class="col-12 mt-lg-5" > <!-- Linha botão conclusão de tarefa // Inicio -->
+                        <!-- Botão para acionar modal // Inicio -->
+                        <button 
+                        type="button" 
+                        class="btn btn-outline-danger" 
+                        data-toggle="modal" 
+                        data-target="#modalExclusao">
+                            Excluir Tarefa
+                        </button> <!-- Botão para acionar modal // Inicio -->
+
+                        <!-- Modal Exclusão -->
+                        <div class="modal fade" id="modalExclusao" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content"> <!-- Container do Modal de exclusão // Inicio -->
+
+                                    <div class="modal-header"> <!-- Cabeçalho do Modal // Inicio -->
+                                        <h5 class="modal-title text-danger" id="exampleModalLabel">Excluir Tarefa</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div> <!-- Cabeçalho do Modal // Fim -->
+
+                                    <div class="modal-body"> <!-- Corpo do Modal // Inicio -->
+
+                                        <div class="container border">
+                                            <div class="row justify-content-center">
+                                                <div class="col-7">
+                            
+                                                    <div class="row justify-content-center border-bottom border-dark "> <!-- Linha de titulo tarefa -->
+                                                        Tarefas Ativas
+                                                    </div>
+
+                                                    <div class="row justify-content-center ">
+                                                        <div class="col-12 p-1 text-center">
+
+                                                            <div class="form-check border border-info my-1 rounded">
+                                                                <input class="form-check-input" type="radio" name="tarefasAtivas" id="tarefa1" value="opcao1">
+                                                                    <label class="form-check-label" for="tarefa1">
+                                                                        Tarefa 1
+                                                                    </label>
+                                                            </div>
+                                                            <div class="form-check border border-info my-1 rounded">
+                                                                <input class="form-check-input" type="radio" name="tarefasAtivas" id="tarefa2" value="opcao2">
+                                                                    <label class="form-check-label" for="tarefa2">
+                                                                        Tarefa 2
+                                                                    </label>
+                                                            </div>
+                                                            <div class="form-check border border-info my-1 rounded">
+                                                                <input class="form-check-input" type="radio" name="tarefasAtivas" id="tarefa3" value="opcao3">
+                                                                    <label class="form-check-label" for="tarefa3">
+                                                                        Tarefa 3
+                                                                    </label>
+                                                            </div>
+
+
+
+
+
+                                                        </div>
+                                                    </div>
+
+
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div> <!-- Corpo do Modal // Fim -->
+
+                                    <div class="modal-footer"> <!-- Rodapé do Modal // Inicio -->
+
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                            Fechar
+                                        </button>
+
+                                        <button type="button" class="btn btn-danger">
+                                            Excluir Tarefa
+                                        </button>
+
+                                    </div><!-- Rodapé do Modal // Fim -->
+
+                                </div> <!-- Container do Modal de exclusão // Fim -->
+                            </div>
+                        </div>
+
+                    </div> <!-- Botão de exclusão // Fim -->
+
+                </div> <!-- Linha dos botões de inclusão / exclusão // Fim -->
+
+                <div class="col-12 mt-lg-5" > <!-- Botão finalização de tarefa // Inicio -->
                     <div class="row justify-content-center ">
-                        <div class="col-8">
-                            <button type="button" class="btn btn-block btn-primary">
-                                Finalizar Tarefa
-                            </button>
+                        <div class="col-12 col-md-6 col-lg-12 ">
+
+                        <!-- Botão para acionar modal // Inicio -->
+                        <button 
+                        type="button" 
+                        class="btn btn-block btn-outline-info" 
+                        data-toggle="modal" 
+                        data-target="#modalFinalizacao">
+                            Finalizar Tarefa
+                        </button> <!-- Botão para acionar modal // Inicio -->
+
+                        <!-- Modal Finalização -->
+                        <div class="modal fade" id="modalFinalizacao" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content"> <!-- Container do Modal de finalização // Inicio -->
+
+                                    <div class="modal-header"> <!-- Cabeçalho do Modal // Inicio -->
+                                        <h5 class="modal-title text-secondary" id="exampleModalLabel">Finalizar Tarefa</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div> <!-- Cabeçalho do Modal // Fim -->
+
+                                    <div class="modal-body"> <!-- Corpo do Modal // Inicio -->
+
+                                        <div class="container border">
+                                            <div class="row justify-content-center">
+                                                <div class="col-7">
+                            
+                                                    <div class="row justify-content-center border-bottom border-dark "> <!-- Linha de titulo tarefa -->
+                                                        Tarefas Ativas
+                                                    </div>
+
+                                                    <div class="row justify-content-center ">
+                                                        <div class="col-12 p-1 text-center">
+
+                                                            <div class="form-check border border-info my-1 rounded">
+                                                                <input class="form-check-input" type="radio" name="tarefasAtivas" id="tarefa1" value="opcao1">
+                                                                    <label class="form-check-label" for="tarefa1">
+                                                                        Tarefa 1
+                                                                    </label>
+                                                            </div>
+                                                            <div class="form-check border border-info my-1 rounded">
+                                                                <input class="form-check-input" type="radio" name="tarefasAtivas" id="tarefa2" value="opcao2">
+                                                                    <label class="form-check-label" for="tarefa2">
+                                                                        Tarefa 2
+                                                                    </label>
+                                                            </div>
+                                                            <div class="form-check border border-info my-1 rounded">
+                                                                <input class="form-check-input" type="radio" name="tarefasAtivas" id="tarefa3" value="opcao3">
+                                                                    <label class="form-check-label" for="tarefa3">
+                                                                        Tarefa 3
+                                                                    </label>
+                                                            </div>
+
+
+
+
+
+                                                        </div>
+                                                    </div>
+
+
+
+
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div> <!-- Corpo do Modal // Fim -->
+
+                                    <div class="modal-footer"> <!-- Rodapé do Modal // Inicio -->
+
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                            Fechar
+                                        </button>
+
+                                            <!-- Botão para acionar modal de tarefa selecionada // Inicio -->
+                                            <button 
+                                            type="button" 
+                                            class="btn btn-outline-info" 
+                                            data-toggle="modal" 
+                                            data-target="#modalTaferaSelecionada">
+                                                Selecionar Tarefa
+                                            </button> <!-- Botão para acionar modal de tarefa selecionada// Inicio -->
+
+                                            <!-- Modal de tarefa selecionada -->
+                                            <div class="modal fade" id="modalTaferaSelecionada" tabindex="-2" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog" role="document">
+                                                    <div class="modal-content"> <!-- Container do Modal de tarefa selecionada // Inicio -->
+
+                                                        <div class="modal-header"> <!-- Cabeçalho do Modal // Inicio -->
+                                                            <h5 class="modal-title text-secondary" id="exampleModalLabel">Tarefa X</h5>
+                                                            <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                                                                <span aria-hidden="true">&times;</span>
+                                                            </button>
+                                                        </div> <!-- Cabeçalho do Modal // Fim -->
+
+                                                        <div class="modal-body"> <!-- Corpo do Modal // Inicio -->
+
+                                                            <div class="container border">
+                    
+                                                                <form class="row">
+                    
+                                                                    <div class="form-group col-md-12"> <!-- Titulo Tarefa -->
+                                                                        <label for="tituloTarefa">Titulo da tarefa</label>
+                                                                        <input type="text" class="form-control" id="tituloTarefa" placeholder="tarefa x" disabled>
+                                                                    </div> <!-- Titulo Tarefa -->
+                    
+                                                                    <div class="form-group col-md-6"> <!-- Data Tarefa -->
+                                                                        <label for="categoriaTarefa">Data da Tarefa</label>
+                                                                        <input type="text" class="form-control" id="tituloTarefa" placeholder="00/00/0000" disabled>
+                                                                    </div> <!-- Data Tarefa -->
+                    
+                                                                    <div class="form-group col-md-12"> <!-- Descrição Tarefa-->
+                                                                        <label for="exampleFormControlTextarea1">Descrição da tarefa </label>
+                                                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" disabled placeholder="descrição tarefa"></textarea>
+                                                                    </div> <!-- Descrição Tarefa-->
+
+                                                                    <div class="form-group col-md-12"> <!-- Conclusão Tarefa-->
+                                                                        <label for="exampleFormControlTextarea1">Conclusão da tarefa </label>
+                                                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" placeholder="Insira a conclusão da tarefa"></textarea>
+                                                                    </div> <!-- Conclusão Tarefa-->
+
+                                                                </form>
+                    
+                                                            </div>
+                    
+                                                        </div> <!-- Corpo do Modal // Fim -->
+                    
+                    
+                                                        <div class="modal-footer"> <!-- Rodapé do Modal // Inicio -->
+
+                                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">
+                                                                Fechar
+                                                            </button>
+
+                                                            <button type="button" class="btn btn-primary">
+                                                                Finalizar Tarefa
+                                                            </button>
+
+                                                        </div><!-- Rodapé do Modal // Fim -->
+
+                                                    </div> <!-- Container do Modal de tarefa selecionada // Fim -->
+                                                </div>
+                                            </div>
+
+
+                                    </div><!-- Rodapé do Modal // Fim -->
+
+                                </div> <!-- Container do Modal de finalização // Fim -->
+                            </div>
+                        </div>
+
                         </div>
                     </div>
-                </div> <!-- Linha botão conclusão de tarefa // Fim -->
+                </div> <!-- Linha botão finalização de tarefa // Fim -->
+
             </div> 
         </div> <!-- Primeira coluna // Botões de inclusão, exclusão e conclusão de tarefas // Fim -->
 
@@ -100,6 +405,8 @@
     </div>
 
 </div>
+
+
 
 
 

@@ -35,6 +35,19 @@
 
                                             <div class="container border">
                                                 <form novalidate class="" [formGroup] ='formEntradaTarefa' (ngSubmit)="incluirTarefa()">
+
+                                                    <div class="form-group col-md-4 d-none"> <!-- Id Tarefa -->
+                                                        <label for="idTarefa"> Id Tarefa </label>
+                                                        <input 
+                                                        type="number"
+                                                        class="form-control"
+                                                        formControlName="id"
+                                                        id="idTarefa"
+                                                        placeholder="{{idTarefa}}"
+                                                        >
+                                                    </div> <!-- Id Tarefa -->
+
+
                                                     <div class="form-group col-md-12"> <!-- Titulo Tarefa -->
                                                         <label for="tituloTarefa">Titulo da tarefa</label>
                                                         <input 
@@ -43,6 +56,10 @@
                                                         id="tituloTarefa" 
                                                         placeholder="Titulo da tarefa"
                                                         formControlName="titulo">
+
+                                                        <small *ngIf="formEntradaTarefa.get('titulo')?.valid && formEntradaTarefa.get('titulo')?.touched" class="form-text text-success">Ok</small>
+
+                                                        <small *ngIf="formEntradaTarefa.get('titulo')?.invalid && formEntradaTarefa.get('titulo')?.touched" class="form-text text-danger">Insira o titulo da tarefa</small>
                                                     </div> <!-- Titulo Tarefa -->
 
                                                     <div class="form-group col-md-6"> <!-- Data Tarefa -->
@@ -52,6 +69,10 @@
                                                         class="form-control" 
                                                         id="dataTarefa"
                                                         formControlName="data">
+
+                                                        <small *ngIf="formEntradaTarefa.get('data')?.valid && formEntradaTarefa.get('data')?.touched" class="form-text text-success">Ok</small>
+
+                                                        <small *ngIf="formEntradaTarefa.get('data')?.invalid && formEntradaTarefa.get('data')?.touched" class="form-text text-danger">Insira a data da tarefa</small>
                                                     </div> <!-- Data Tarefa -->
 
                                                     <div class="form-group col-md-12"> <!-- Descrição Tarefa-->
@@ -61,6 +82,10 @@
                                                         id="descricaoTarefa" 
                                                         rows="3"
                                                         formControlName="descricao"></textarea>
+
+                                                        <small *ngIf="formEntradaTarefa.get('descricao')?.valid && formEntradaTarefa.get('descricao')?.touched" class="form-text text-success">Ok</small>
+
+                                                        <small *ngIf="formEntradaTarefa.get('descricao')?.invalid && formEntradaTarefa.get('descricao')?.touched" class="form-text text-danger">Insira a descrição da tarefa</small>
                                                     </div> <!-- Descrição Tarefa-->
 
                                                     <div class="col-12 text-right">
@@ -352,7 +377,7 @@
                         </div>
 
                         <div class="row justify-content-center border border-info my-1"> <!-- Linha de tarefa -->
-                            Tarefa X
+                            
                         </div>
 
                         <div class="row justify-content-center border border-info my-1"> <!-- Linha de tarefa -->
@@ -405,10 +430,3 @@
     </div>
 
 </div>
-
-
-
-
-
-
-

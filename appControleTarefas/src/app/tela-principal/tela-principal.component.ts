@@ -11,10 +11,14 @@ import { Tarefa } from '../shared/tarefa.model';
 export class TelaPrincipalComponent implements OnInit {
 
   public tarefa !:Tarefa
+  public tarefas : Tarefa[] = []
+
+  public idTarefa : number = 0
 
   public formEntradaTarefa: FormGroup = new FormGroup({
+    'id': new FormControl(null),
     'titulo': new FormControl(null,[Validators.required,Validators.minLength(3),Validators.maxLength(25)]),
-    'data': new FormControl(null),
+    'data': new FormControl(null, [Validators.required, Validators.minLength(10)]),
     'descricao': new FormControl(null, [Validators.required, Validators.minLength(5),Validators.maxLength(75)])
   })
 
@@ -27,12 +31,30 @@ export class TelaPrincipalComponent implements OnInit {
     
   }
 
-
   public incluirTarefa():void{
-    console.log(this.formEntradaTarefa)
-    console.log('---------------------------------')
-    console.log(this.formEntradaTarefa.value)
+
+    if(this.formEntradaTarefa.status === 'INVALID'){
+      this.formEntradaTarefa.get('titulo')?.markAllAsTouched()
+      this.formEntradaTarefa.get('data')?.markAllAsTouched()
+      this.formEntradaTarefa.get('descricao')?.markAllAsTouched()
+    } else{
+
+      let tarefa:Tarefa = new Tarefa (
+        this.formEntradaTarefa.value.id = this.idTarefa,
+        this.formEntradaTarefa.value.titulo,
+        this.formEntradaTarefa.value.data,
+        this.formEntradaTarefa.value.descricao
+      )
+      this.tarefas.push(tarefa)
+      this.idTarefa ++
+    }
+
+
+
+
   }
+
+  
 
 
 

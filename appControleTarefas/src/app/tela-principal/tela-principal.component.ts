@@ -49,6 +49,14 @@ export class TelaPrincipalComponent implements OnInit {
       this.idTarefa ++
     }
 
+    console.log(' Array de tarefas ',this.tarefas)
+    console.log('Indice 0 ', this.tarefas[0])
+    console.log('Indice 0 ID ', this.tarefas[0].id)
+    console.log('Indice 0 TITULO ', this.tarefas[0].titulo)
+    console.log('Indice 0 DATA ', this.tarefas[0].data)
+    console.log('Indice 0 DESCRIÇÃO ', this.tarefas[0].descricao)
+
+
 
 
 

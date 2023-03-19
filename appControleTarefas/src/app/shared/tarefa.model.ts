@@ -1,8 +1,8 @@
 export class Tarefa{
     constructor(
         public id:number,
-        public data:string,
         public titulo:string,
+        public data:string,
         public descricao:string
 
     ){}

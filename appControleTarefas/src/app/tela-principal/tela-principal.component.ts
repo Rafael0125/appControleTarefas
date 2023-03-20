@@ -11,9 +11,9 @@ import { Tarefa } from '../shared/tarefa.model';
 export class TelaPrincipalComponent implements OnInit {
 
   public tarefa !:Tarefa
-  public tarefas : Tarefa[] = []
+  public tarefas : Tarefa[] = [ ]
 
-  public idTarefa : number = 0
+  public idTarefa : number = 1
 
   public formEntradaTarefa: FormGroup = new FormGroup({
     'id': new FormControl(null),
@@ -47,14 +47,13 @@ export class TelaPrincipalComponent implements OnInit {
       )
       this.tarefas.push(tarefa)
       this.idTarefa ++
+
+      console.log(tarefa)
     }
 
     console.log(' Array de tarefas ',this.tarefas)
-    console.log('Indice 0 ', this.tarefas[0])
-    console.log('Indice 0 ID ', this.tarefas[0].id)
-    console.log('Indice 0 TITULO ', this.tarefas[0].titulo)
-    console.log('Indice 0 DATA ', this.tarefas[0].data)
-    console.log('Indice 0 DESCRIÇÃO ', this.tarefas[0].descricao)
+
+
 
 
 

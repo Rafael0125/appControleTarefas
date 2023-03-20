@@ -4,7 +4,7 @@
     <div class="row d-flex m-1">
 
         <div class="col-lg-2 my-1"> <!-- Primeira coluna // Botão de inclusão // Inicio -->
-            <div class="row text-center"> 
+            <div class="row "> 
 
                 <div class="col-12 "> <!-- Botão de inclusão // Inicio -->
 
@@ -127,16 +127,22 @@
                         <div class="row justify-content-center ">
                             <div class="col-11 p-1">
 
-                                <div class="form-check border border-info my-1 rounded">
-                                    <input class="form-check-input" type="radio" name="tarefasAtivas" id="tarefa1" value="opcao1">
-                                        <label class="form-check-label border " for="tarefa1">
-                                            Tarefa 1: 
-                                        </label>
+                                <div *ngFor="let tarefa of tarefas">
+
+                                    <div class="form-check my-1 rounded">
+                                        <input class="form-check-input" type="radio" name="tarefasAtivas" id="tarefa1" value="opcao1">
+                                            <label class="form-check-label" for="tarefa1">
+                                                Tarefa {{tarefa.id}} : {{tarefa.titulo}}
+                                            </label>
+                                    </div>
+
+
                                 </div>
-                                <div class="form-check border border-info my-1 rounded">
+                                <!-- <div class="form-check border border-info my-1 rounded"
+                                *ngIf="this.tarefas[1].titulo !== null">
                                     <input class="form-check-input" type="radio" name="tarefasAtivas" id="tarefa2" value="opcao2">
                                         <label class="form-check-label" for="tarefa2">
-                                            Tarefa 2
+                                            Tarefa 2 {{this.tarefas[1].titulo}}
                                         </label>
                                 </div>
                                 <div class="form-check border border-info my-1 rounded">
@@ -144,7 +150,7 @@
                                         <label class="form-check-label" for="tarefa3">
                                             Tarefa 3
                                         </label>
-                                </div>
+                                </div>-->
                             </div>
 
                             <div class="col-lg-11 my-1"> <!-- Botões -->
